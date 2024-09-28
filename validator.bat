@@ -1,5 +1,5 @@
 @echo off
-
+echo starting validation script
 REM ELEVATION
 net session >nul 2>&1
 if %errorlevel% neq 0 (
