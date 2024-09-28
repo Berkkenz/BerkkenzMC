@@ -1,4 +1,13 @@
 @echo off
+
+REM ELEVATION
+net session >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Please approve the elevation prompt.
+    powershell -Command "Start-Process '%~f0' -Verb runAs"
+    exit /b
+)
+
 REM GIT VALIDATION
 if exist "%TEMP%\gitinstaller.exe" (
 	git --version 2>nul
