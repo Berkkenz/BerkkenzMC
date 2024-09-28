@@ -1,10 +1,11 @@
 @echo off
 REM ELEVATION
 net session >nul 2>&1
-if errorlevel 1 (
+if %errorlevel% neq 0 (
     echo This script requires administrator privileges.
-    pause
-    exit /b 1
+    echo Please approve the elevation prompt.
+	 powershell -Command "Start-Process '%~f0' -Verb runAs"
+    exit /b
 )
 
 REM JAVA 8 VALIDATION
