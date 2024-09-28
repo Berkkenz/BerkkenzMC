@@ -8,26 +8,11 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
-REM GIT VALIDATION
-if exist "%TEMP%\gitinstaller.exe" (
-	git --version 2>nul
-	if errorlevel 1 (
-		where git 2>nul
-		if errorlevel 1 (
-			del /f /q "%TEMP%\gitinstaller.exe"
-			exit /b 1
-		) else (
-			del /f /q "%TEMP%\gitinstaller.exe"
-			exit /b 0
-		)
-	) else (
-		del /f /q "%TEMP%\gitinstaller.exe"
-		exit /b 0
-	)
-)
+
+
 REM JAVA 8 VALIDATION
 if exist "%TEMP%\java8installer.exe" (
-	java -version 2>nul
+	"%ProgramFiles(x86)%\Java\jre1.8.0_421\bin\java.exe" -version 2>nul
 	if errorlevel 1 (
 		where java 2>nul
 		if errorlevel 1 (
