@@ -12,7 +12,7 @@ if %errorlevel% neq 0 (
 
 REM JAVA 8 VALIDATION
 if exist "%TEMP%\java8installer.exe" (
-	"%ProgramFiles(x86)%\Java\jre1.8.0_421\bin\java.exe" -version 2>nul
+	where java 2>nul
 	if errorlevel 1 (
 		java --version 2>nul | find "1.8" >null
 		if errorlevel 1 (
