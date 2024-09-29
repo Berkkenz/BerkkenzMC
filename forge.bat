@@ -30,8 +30,10 @@ if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	) else (
 		cls
 		echo Forge has been installed successfully. Proceeding...
+		exit /b 0
 	)
 ) else (
 	cls
 	echo Correct Forge is already installed. Proceeding...
+	exit /b 0
 )
