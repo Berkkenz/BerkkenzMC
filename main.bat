@@ -1,14 +1,14 @@
 @echo off
+setlocal enabledelayedexpansion
 
 set "LR=%APPDATA%\BerkkenzMC"
 set "LOCAL_VERSION_FILE=%REPOPATH%\version.txt"
 set "RR=https://github.com/Berkkenz/BerkkenzMC.git"
 set "JAVA8=%ProgramFiles(x86)%\Java\jre1.8.0_421\bin\java.exe"
 set "JAVA17=%ProgramFiles%\Java\jdk-17\bin\java.exe"
-set "FORGELOG=%TEMP%\forgelog.txt"
 
 echo Main Batch Started...
-
+pause
 if not exist "%APPDATA%\.minecraft" (
 	cls
 	echo Minecraft is not installed. Exiting...
@@ -21,8 +21,7 @@ if not exist "%APPDATA%\.minecraft" (
 cls
 echo Checking if Java 8 is installed...
 REM THIS IS THE JAVA 8 UPDATE ------------------------------------------------------
-where java >nul
-if errorlevel 1 (
+if not exist "%JAVA8%" (
 	cls
 	echo Java 8 is not installed, attempting download...
 	curl -L -o "%TEMP%\java8installer.exe" "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=250111_d8aa705069af427f9b83e66b34f5e380"
@@ -64,6 +63,7 @@ if errorlevel 1 (
 ) else (
 	cls
 	echo Java 8 is already installed...
+	pause
 )
 
 if not exist "%JAVA17%" (
