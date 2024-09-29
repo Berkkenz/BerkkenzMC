@@ -123,18 +123,7 @@ if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	pause
 )
 
-if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
-	pause
-	if not exist "%MC%\versions\1.20.1" (
-		cls
-		echo Creating forge dependancies...
-		rmdir /q /s "%MC%\versions\1.20.1"
-		xcopy "%LR%\1.20.1" "%MC%\versions\1.20.1" /e /i /h /y
-	)
-	curl -L -o "%TEMP%\forgeinstaller.jar" "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.10/forge-1.20.1-47.3.10-installer.jar"
-	%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient
 
-		
 
 :filecopy
 cd /d %LR%
