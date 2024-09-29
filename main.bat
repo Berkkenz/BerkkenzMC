@@ -6,6 +6,7 @@ set "LOCAL_VERSION_FILE=%REPOPATH%\version.txt"
 set "RR=https://github.com/Berkkenz/BerkkenzMC.git"
 set "JAVA8=%ProgramFiles(x86)%\Java\jre1.8.0_421\bin\java.exe"
 set "JAVA17=%ProgramFiles%\Java\jdk-17\bin\java.exe"
+set "MC=%APPDATA%\.minecraft"
 
 echo Main Batch Started...
 
@@ -116,13 +117,13 @@ echo Initiating forge check...
 :forgecheck
 pause
 
-if not exist "%APPDATA%\versions\1.20.1-forge-47.3.10" (
+if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	pause
-	if not exist "%APPDATA%\versions\1.20.1" (
+	if not exist "%MC%\versions\1.20.1" (
 		cls
 		echo Creating forge dependancies...
-		rmdir /q /s "%APPDATA%\.minecraft\versions\1.20.1"
-		xcopy "%LR%\1.20.1" "%APPDATA%\.minecraft\versions\1.20.1" /e /i /h /y
+		rmdir /q /s "%MC%\versions\1.20.1"
+		xcopy "%LR%\1.20.1" "%MC%\versions\1.20.1" /e /i /h /y
 	)
 	curl -L -o "%TEMP%\forgeinstaller.jar" "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.10/forge-1.20.1-47.3.10-installer.jar"
 	%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient
