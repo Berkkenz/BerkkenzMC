@@ -132,6 +132,7 @@ if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10" (
 		echo Version 1.20.1 not installed, cloning placeholder...
 		if exist "%APPDATA%\.minecraft\versions\1.20.1" (
 			copy "%LR%\1.20.1\1.20.1.jar" "%APPDATA%\.minecraft\versions\1.20.1" /y
+			copy "%LR%\1.20.1\1.20.1.json" "%APPDATA%\.minecraft\versions\1.20.1" /y
 		) else (
 			copy "%LR%\1.20.1" "%APPDATA%\.minecraft\versions" /y
 		)
