@@ -1,0 +1,411 @@
+{
+  "general": {
+    "doEffectsInCreative": true,
+    "waterSubstractFactor": 10,
+    "enableDamageDebug": false
+  },
+  "handlers": {
+    "explosion": {
+      "enabled": true,
+      "opacity": 1.0,
+      "dust": {
+        "disabled": false,
+        "opacity": 0.29836065,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        }
+      },
+      "dustDuration": {
+        "min": 0,
+        "max": 400
+      },
+      "dustAmount": {
+        "min": 0,
+        "minValue": 0,
+        "max": 15,
+        "maxValue": 15
+      },
+      "maxExplosionVolume": 0.3,
+      "explosionSoundTime": {
+        "min": 0,
+        "minValue": 0,
+        "max": 5,
+        "maxValue": 50
+      },
+      "blur": {
+        "disabled": false,
+        "opacity": 0.5
+      },
+      "maxBlur": {
+        "min": 0,
+        "minValue": 0,
+        "max": 6,
+        "maxValue": 50
+      },
+      "explosionBlurTime": {
+        "min": 0,
+        "minValue": 0,
+        "max": 10,
+        "maxValue": 10
+      }
+    },
+    "potion": {
+      "enabled": false,
+      "opacity": 0.5975976,
+      "duration": {
+        "min": 30,
+        "max": 60
+      },
+      "potion": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0
+      }
+    },
+    "sand": {
+      "enabled": true,
+      "opacity": 0.30322582,
+      "duration": {
+        "min": 20,
+        "max": 80
+      },
+      "sprintModifier": 1.5,
+      "sand": {
+        "disabled": false,
+        "opacity": 0.49508196,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.1,
+          "max": 0.5
+        }
+      }
+    },
+    "splash": {
+      "enabled": true,
+      "opacity": 1.0,
+      "duration": {
+        "min": 4,
+        "max": 10
+      },
+      "intensity": {
+        "min": 2,
+        "max": 6
+      },
+      "blur": {
+        "disabled": false,
+        "opacity": 0.5029586
+      }
+    },
+    "damage": {
+      "enabled": true,
+      "opacity": 0.59786475,
+      "damaged": {
+        "disabled": false,
+        "opacity": 0.6032787,
+        "animationSpeed": 0
+      },
+      "hitEffectIntensity": 0.0,
+      "hitDuration": {
+        "min": 1,
+        "max": 5
+      },
+      "splatter": {
+        "disabled": false,
+        "opacity": 0.8,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        }
+      },
+      "impact": {
+        "disabled": false,
+        "opacity": 0.70163935,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        }
+      },
+      "slash": {
+        "disabled": false,
+        "opacity": 0.6032787,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        }
+      },
+      "pierce": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        }
+      },
+      "bloodDuration": {
+        "min": 500,
+        "max": 1500
+      },
+      "fire": {
+        "disabled": false,
+        "opacity": 0.44918033,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        }
+      },
+      "fireSplashes": 1,
+      "fireDuration": {
+        "min": 100,
+        "max": 1000
+      },
+      "drownSplashes": 4,
+      "drownDuration": {
+        "min": 10,
+        "max": 15
+      },
+      "waterDrown": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        },
+        "red": 0,
+        "green": 0,
+        "blue": 255,
+        "alpha": 255
+      },
+      "lightningSplashes": 10,
+      "lightningDuration": {
+        "min": 10,
+        "max": 15
+      },
+      "lightning": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        },
+        "red": 120,
+        "green": 120,
+        "blue": 255,
+        "alpha": 255
+      },
+      "freezeSplashes": 4,
+      "freezeDuration": {
+        "min": 10,
+        "max": 15
+      },
+      "freeze": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        },
+        "red": 200,
+        "green": 255,
+        "blue": 255,
+        "alpha": 255
+      },
+      "flyIntoWallSplashes": 4,
+      "flyIntoWallDuration": {
+        "min": 10,
+        "max": 15
+      },
+      "flyIntoWall": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        },
+        "red": 255,
+        "green": 255,
+        "blue": 255,
+        "alpha": 255
+      },
+      "heatSplashes": 4,
+      "heatDuration": {
+        "min": 10,
+        "max": 15
+      },
+      "heat": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        },
+        "red": 255,
+        "green": 255,
+        "blue": 255,
+        "alpha": 255
+      },
+      "effectSplashes": 4,
+      "effectDuration": {
+        "min": 10,
+        "max": 15
+      },
+      "parasites": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        },
+        "red": 0,
+        "green": 126,
+        "blue": 0,
+        "alpha": 255
+      },
+      "wither": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 1.5,
+          "max": 2.5
+        },
+        "red": 0,
+        "green": 0,
+        "blue": 0,
+        "alpha": 255
+      },
+      "tunnelDuration": {
+        "min": 10,
+        "max": 15
+      },
+      "tunnel": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0
+      },
+      "healthScaler": {
+        "min": 0,
+        "minValue": 3,
+        "max": 12,
+        "maxValue": 1.5
+      },
+      "damageScale": 1.0,
+      "damageBlackList": []
+    },
+    "slender": {
+      "enabled": true,
+      "opacity": 0.20401338,
+      "defaultIntensity": 0,
+      "maxIntensity": 0.1,
+      "distanceFactor": 0.05,
+      "slender": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 50
+      }
+    },
+    "saturation": {
+      "enabled": false,
+      "opacity": 1.0,
+      "fadeFactor": 0.0005,
+      "saturation": {
+        "min": 2,
+        "minValue": 0,
+        "max": 8,
+        "maxValue": 1
+      },
+      "desaturate": {
+        "disabled": false,
+        "opacity": 1.0
+      }
+    },
+    "heartbeat": {
+      "enabled": true,
+      "opacity": 1.0,
+      "useHealthPercentage": false,
+      "maxHealth": 6,
+      "maxHealthPercentage": 0.3,
+      "heartbeatOverlayIntensity": 0.15,
+      "heartbeatOverlayDuration": 20,
+      "heartbeatBlurIntensity": 20.0,
+      "heartbeatBlurDuration": 5,
+      "minHeartbeatLength": 15,
+      "heartbeatTimeFactor": 100.0,
+      "heartbeatVolume": 0.15,
+      "lowhealth": {
+        "disabled": false,
+        "opacity": 0.50163937,
+        "animationSpeed": 0
+      },
+      "blur": {
+        "disabled": false,
+        "opacity": 0.15384616
+      }
+    },
+    "underwater": {
+      "enabled": true,
+      "opacity": 0.29813665,
+      "intensity": 5,
+      "fadeFactor": 0.5,
+      "blur": {
+        "disabled": false,
+        "opacity": 0.20414202
+      }
+    },
+    "rain": {
+      "enabled": true,
+      "opacity": 0.6036036,
+      "duration": {
+        "min": 100,
+        "max": 100
+      },
+      "drop": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.1,
+          "max": 0.5
+        },
+        "red": 41,
+        "green": 76,
+        "blue": 149,
+        "alpha": 255
+      },
+      "delay": {
+        "min": 0,
+        "max": 0
+      },
+      "amount": {
+        "min": 1,
+        "max": 1
+      }
+    },
+    "health": {
+      "enabled": true,
+      "opacity": 0.70357144,
+      "impact": {
+        "disabled": false,
+        "opacity": 1.0,
+        "animationSpeed": 0,
+        "scale": {
+          "min": 0.2,
+          "max": 1
+        }
+      },
+      "particlesPerDamage": 1
+    }
+  }
+}
