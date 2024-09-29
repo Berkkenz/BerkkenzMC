@@ -116,6 +116,14 @@ echo Initiating forge check...
 pause
 
 if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
+	echo No forge detected
+	pause
+) else (
+	echo forge detected
+	pause
+)
+
+if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	pause
 	if not exist "%MC%\versions\1.20.1" (
 		cls
