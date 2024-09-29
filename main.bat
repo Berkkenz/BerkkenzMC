@@ -115,46 +115,38 @@ cls
 echo Initiating forge check...
 :forgecheck
 pause
-if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10" (
-	echo Correct Forge version not installed. Attempting download...
-	pause
-	curl -L -o "%TEMP%\forgeinstaller.jar" "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.10/forge-1.20.1-47.3.10-installer.jar"
-	if not exist "%TEMP%\forgeinstaller.jar" (
+
+if not exist "%APPDATA%\versions\1.20.1-forge-47.3.10" (
+	if not exist "%APPDATA%\versions\1.20.1" (
 		cls
-		echo Forge download has failed. Exiting...
+		echo Creating forge dependancies...
+		rmdir /q /s "%APPDATA%\.minecraft\versions\1.20.1"
+		xcopy "%LR%\1.20.1" "%APPDATA%\.minecraft\versions\1.20.1" /e /i /h /y
+	)
+	curl -L -o "%TEMP%\forgeinstaller.jar" "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.10/forge-1.20.1-47.3.10-installer.jar"
+	%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient
+	if errorlevel 1 (
+		cls
+		echo Forge install has failed. Exiting...
+		del /q /f "%TEMP%\forgeinstaller.jar"
 		pause
-		del /f /q "%TEMP%\forgeinstaller.jar"
 		exit /b 1
 	)
 	cls
-	echo Forge has downloaded successfully. Attempting download...
-	if not exist "%APPDATA%\.minecraft\versions\1.20.1\1.20.1.jar" (
-		cls
-		echo Version 1.20.1 not installed, cloning placeholder...
-		if exist "%APPDATA%\.minecraft\versions\1.20.1" (
-			rmdir /s /q "%APPDATA%\.minecraft\versions\1.20.1"
-		)
-		xcopy "%LR%\1.20.1" "%APPDATA%\.minecraft\versions\1.20.1" /e /i /h /y
-	)
-	%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient "%APPDATA%\.minecraft"
+	call "%LR%\validator.bat"
 	if errorlevel 1 (
-		if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10\1.20.1-forge-47.3.10.json" (
-			cls
-			echo Forge install has failed. Exiting...
-			del /f /q "%TEMP%\forgeinstaller.jar"
-			pause
-			exit /b 1
-		) else (
-			cls
-			echo Forge install has succeeded, but an error code is present. Proceeding...
-			timeout 3
+		cls
+		echo Forge validation has failed. Exiting...
+		if exist "%TEMP%\forgeinstaller.jar" (
+			del /q /f "%TEMP%\forgeinstaller.jar"
 		)
+		pause
+		exit /b 1
+	) else (
+		cls
+		echo Forge validated. Proceeding...
 	)
-	cls
-	echo Forge has been successfully installed. Proceeding...
-	timeout 3
-)
-echo Forge version already installed
+		
 
 :filecopy
 cd /d %LR%
