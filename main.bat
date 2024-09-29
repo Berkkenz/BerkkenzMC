@@ -117,6 +117,7 @@ echo Initiating forge check...
 pause
 
 if not exist "%APPDATA%\versions\1.20.1-forge-47.3.10" (
+	pause
 	if not exist "%APPDATA%\versions\1.20.1" (
 		cls
 		echo Creating forge dependancies...
@@ -147,6 +148,7 @@ if not exist "%APPDATA%\versions\1.20.1-forge-47.3.10" (
 		echo Forge validated. Proceeding...
 		timeout 3 >nul
 	)
+)
 		
 
 :filecopy
