@@ -67,53 +67,50 @@ if not exist "%JAVA8%" (
 )
 
 if not exist "%JAVA17%" (
-	pause
 	cls
-	echo Java 17 executable not found. Attempting download...
+	echo Java 17 is not installed, attempting download...
 	curl -L -o "%TEMP%\java17installer.exe" "https://download.oracle.com/java/17/archive/jdk-17.0.11_windows-x64_bin.exe"
 	if errorlevel 1 (
-		if not exist "%TEMP%\java17installer.exe" (
-			cls
-			echo Java 17 download has failed. Exiting...
-			pause
-			del /f /q "%TEMP%\java17installer.exe"
-			exit /b 1
-		) else (
-			cls
-			echo Java 17 download was successful, but an error level was present. Proceeding...
-			del /f /q "%TEMP%\java17installer.exe"
-			timeout 3
-		)
+		cls
+		echo Java 17 download has failed. Exiting...
+		echo msgbox "Java 17 download has unexpectedly failed and has terminated the script.", vbInformation, "Java 17 Download Failed" > "%TEMP%\java8popup.vbs"
+		cscript //nologo "%TEMP%\java17popup.vbs"
+		del /s /f "%TEMP%\java17popup.vbs"
+		del /q /f "%TEMP%\java17installer.exe"
+		exit /b 1
 	)
 	cls
-	echo Java download successfull. Attempting install...
+	echo Java 17 download successful. Attempting install...
 	start "" /wait "%TEMP%\java17installer.exe" /s
 	if errorlevel 1 (
-		if not exist "%JAVA17%" (
-			cls
-			echo Java 17 install has failed. Exiting...
-			pause
-			del /f /q "%TEMP%\java17installer.exe"
-			exit /b 1
-		) else (
-			cls
-			echo Java 17 install successful, but an error level was present. Proceeding...
-			del /f /q "%TEMP%\java17installer.exe"
-			timeout 3
-		)
+		cls
+		echo Java 17 install has failed. Exiting...
+		pause
+		del /q /f "%TEMP%\java17installer.exe"
+		exit /b 1
 	)
 	cls
-	echo Java 17 has been successfully installed. Proceeding...
-	del /f /q "%TEMP%\java17installer.exe"
+	echo Java 17 finalizing
+	timeout 4 /nobreak >nul
+	call "%LR%\validator.bat"
+	if errorlevel 1 (
+		cls
+		echo Java 17 install has failed. Exiting...
+		pause
+		if exist "%TEMP%\java17installer.exe" (
+			del /q /f "%TEMP%\java17installer.exe"
+		)
+		exit /b 1
+	)
+	cls
+	echo Java 17 install successful! Proceeding...
 	timeout 3
 ) else (
 	cls
-	echo Java 17 is already installed. Proceeding...
-	if exist "%TEMP%\java17installer.exe" (
-		del /f /q "%TEMP%\java17installer.exe"
-		pause
-	)
+	echo Java 17 is already installed...
+	pause
 )
+pause
 
 cls
 :forgecheck
