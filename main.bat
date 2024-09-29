@@ -145,6 +145,7 @@ if not exist "%APPDATA%\versions\1.20.1-forge-47.3.10" (
 	) else (
 		cls
 		echo Forge validated. Proceeding...
+		timeout 3 >nul
 	)
 		
 
