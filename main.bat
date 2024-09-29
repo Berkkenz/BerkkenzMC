@@ -112,6 +112,7 @@ if not exist "%JAVA17%" (
 )
 
 cls
+echo Initiating forge check...
 :forgecheck
 pause
 if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10" (
