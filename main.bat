@@ -127,8 +127,16 @@ if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10" (
 	)
 	cls
 	echo Forge has downloaded successfully. Attempting download...
-	"%JAVA8%" -jar "%TEMP%\forgeinstaller.jar" --installClient "%APPDATA%\.minecraft" > "%TEMP%\forge_install_log.txt" 2>&1
-	type "%TEMP%\forge_install_log.txt"
+	if not exist "%APPDATA%\.minecraft\versions\1.20.1\1.20.1.jar" (
+		cls
+		echo Version 1.20.1 not installed, cloning placeholder...
+		if exist "%APPDATA%\.minecraft\versions\1.20.1" (
+			copy "%LR%\1.20.1\1.20.1.jar" "%APPDATA%\.minecraft\versions\1.20.1" /y
+		) else (
+			copy "%LR%\1.20.1" "%APPDATA%\.minecraft\versions" /y
+		)
+	)
+	java -jar "%TEMP%\forgeinstaller.jar" --installClient "%APPDATA%\.minecraft"
 	if errorlevel 1 (
 		if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10\1.20.1-forge-47.3.10.json" (
 			cls
