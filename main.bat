@@ -9,6 +9,15 @@ set "FORGELOG=%TEMP%\forgelog.txt"
 
 echo Main Batch Started...
 
+if not exist "%APPDATA%\.minecraft" (
+	cls
+	echo Minecraft is not installed. Exiting...
+	echo msgbox "Minecraft is not installed. Please install Minecraft and relaunch BerkkenzMC!", vbInformation, "Minecraft Folder Missing" > "%TEMP%\mcpopup.vbs"
+	cscript //nologo "%TEMP%\mcpopup.vbs"
+	del /s /f "%TEMP%\mcpopup.vbs"
+	exit /b 1
+)	
+
 cls
 echo Checking if Java 8 is installed...
 REM THIS IS THE JAVA 8 UPDATE ------------------------------------------------------
@@ -20,7 +29,9 @@ if errorlevel 1 (
 	if errorlevel 1 (
 		cls
 		echo Java download has failed. Exiting...
-		pause
+		echo msgbox "Java 8 download has unexpectedly failed and has terminated the script.", vbInformation, "Java 8 Download Failed" > "%TEMP%\java8popup.vbs"
+		cscript //nologo "%TEMP%\mcpopup.vbs"
+		del /s /f "%TEMP%\mcpopup.vbs"
 		del /q /f "%TEMP%\java8installer.exe"
 		exit /b 1
 	)
