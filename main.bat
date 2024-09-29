@@ -117,7 +117,12 @@ pause
 
 if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	echo No forge detected
-	pause
+	call "%LR%\forge.bat"
+	if errorlevel 1 (
+		cls
+		echo Forge install failed. Exiting...
+		exit /b 1
+	)
 ) else (
 	echo forge detected
 	pause
