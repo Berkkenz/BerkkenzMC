@@ -64,7 +64,6 @@ if not exist "%JAVA8%" (
 ) else (
 	cls
 	echo Java 8 is already installed...
-	pause
 )
 
 if not exist "%JAVA17%" (
@@ -109,7 +108,6 @@ if not exist "%JAVA17%" (
 ) else (
 	cls
 	echo Java 17 is already installed...
-	pause
 )
 
 cls
