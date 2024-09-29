@@ -8,7 +8,7 @@ set "JAVA8=%ProgramFiles(x86)%\Java\jre1.8.0_421\bin\java.exe"
 set "JAVA17=%ProgramFiles%\Java\jdk-17\bin\java.exe"
 
 echo Main Batch Started...
-pause
+
 if not exist "%APPDATA%\.minecraft" (
 	cls
 	echo Minecraft is not installed. Exiting...
@@ -67,6 +67,7 @@ if not exist "%JAVA8%" (
 )
 
 if not exist "%JAVA17%" (
+	pause
 	cls
 	echo Java 17 executable not found. Attempting download...
 	curl -L -o "%TEMP%\java17installer.exe" "https://download.oracle.com/java/17/archive/jdk-17.0.11_windows-x64_bin.exe"
@@ -110,6 +111,7 @@ if not exist "%JAVA17%" (
 	echo Java 17 is already installed. Proceeding...
 	if exist "%TEMP%\java17installer.exe" (
 		del /f /q "%TEMP%\java17installer.exe"
+		pause
 	)
 )
 
