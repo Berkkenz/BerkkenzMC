@@ -134,7 +134,7 @@ if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10" (
 			rmdir /s /q "%APPDATA%\.minecraft\versions\1.20.1"
 		)
 		xcopy "%LR%\1.20.1" "%APPDATA%\.minecraft\versions\1.20.1" /e /i /h /y
-		
+	)
 	%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient "%APPDATA%\.minecraft"
 	if errorlevel 1 (
 		if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10\1.20.1-forge-47.3.10.json" (
