@@ -122,13 +122,15 @@ if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 		cls
 		echo Forge install failed. Exiting...
 		exit /b 1
+	) else (
+		cls
+		echo Forge install successful. Proceeding...
 	)
 ) else (
-	echo forge detected
+	echo Forge version detected. Proceeding...
 	pause
 )
-echo %cd%
-pause
+
 
 :filecopy
 cd /d %LR%
