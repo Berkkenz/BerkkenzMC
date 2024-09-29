@@ -110,12 +110,12 @@ if not exist "%JAVA17%" (
 	echo Java 17 is already installed...
 	pause
 )
-pause
 
 cls
 :forgecheck
 if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10" (
 	echo Correct Forge version not installed. Attempting download...
+	pause
 	curl -L -o "%TEMP%\forgeinstaller.jar" "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.10/forge-1.20.1-47.3.10-installer.jar"
 	if not exist "%TEMP%\forgeinstaller.jar" (
 		cls
