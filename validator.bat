@@ -8,8 +8,6 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
-
-
 REM JAVA 8 VALIDATION
 if exist "%TEMP%\java8installer.exe" (
 	where java 2>nul
