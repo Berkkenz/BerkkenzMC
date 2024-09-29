@@ -131,13 +131,11 @@ if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10" (
 		cls
 		echo Version 1.20.1 not installed, cloning placeholder...
 		if exist "%APPDATA%\.minecraft\versions\1.20.1" (
-			copy "%LR%\1.20.1\1.20.1.jar" "%APPDATA%\.minecraft\versions\1.20.1" /y
-			copy "%LR%\1.20.1\1.20.1.json" "%APPDATA%\.minecraft\versions\1.20.1" /y
-		) else (
-			copy "%LR%\1.20.1" "%APPDATA%\.minecraft\versions" /y
+			rmdir /s /q "%APPDATA%\.minecraft\versions\1.20.1"
 		)
-	)
-	java -jar "%TEMP%\forgeinstaller.jar" --installClient "%APPDATA%\.minecraft"
+		xcopy "%LR%\1.20.1" "%APPDATA%\.minecraft\versions\1.20.1" /e /i /h /y
+		
+	%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient "%APPDATA%\.minecraft"
 	if errorlevel 1 (
 		if not exist "%APPDATA%\.minecraft\versions\1.20.1-forge-47.3.10\1.20.1-forge-47.3.10.json" (
 			cls
@@ -162,7 +160,7 @@ cd /d %LR%
 robocopy "%LR%\mods" "%APPDATA%\.minecraft\mods" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting mods folder...
-	del /q /f "%APPDATA%\.minecraft\mods"
+	rmdir /s /q "%APPDATA%\.minecraft\mods"
 	xcopy "%LR%\mods" "%APPDATA%\.minecraft\mods" /e /i /h /y
 )
 echo Mods up-to-date. Proceeding...
@@ -170,7 +168,7 @@ echo Mods up-to-date. Proceeding...
 robocopy "%LR%\config" "%APPDATA%\.minecraft\config" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting config folder...
-	del /q /f "%APPDATA%\.minecraft\config"
+	rmdir /s /q "%APPDATA%\.minecraft\config"
 	xcopy "%LR%\config" "%APPDATA%\.minecraft\config" /e /i /h /y
 )
 echo Config up-to-date. Proceeding...
@@ -182,7 +180,7 @@ if not exist "%APPDATA%\.minecraft\emotes" (
 robocopy "%LR%\emotes" "%APPDATA%\.minecraft\emotes" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting emotes folder...
-	del /q /f "%APPDATA%\.minecraft\emotes"
+	rmdir /s /q "%APPDATA%\.minecraft\emotes"
 	xcopy "%LR%\emotes" "%APPDATA%\.minecraft\emotes" /e /i /h /y
 )
 echo Emotes up-to-date. Proceeding...
@@ -210,7 +208,7 @@ if not exist "%APPDATA%\.minecraft\shaderpacks" (
 robocopy "%LR%\shaderpacks" "%APPDATA%\.minecraft\shaderpacks" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting config folder...
-	del /q /f "%APPDATA%\.minecraft\shaderpacks"
+	rmdir /s /q "%APPDATA%\.minecraft\shaderpacks"
 	xcopy "%LR%\shaderpacks" "%APPDATA%\.minecraft\shaderpacks" /e /i /h /y
 )
 echo Shaderpacks up-to-date. Proceeding...
