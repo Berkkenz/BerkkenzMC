@@ -133,29 +133,7 @@ if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	)
 	curl -L -o "%TEMP%\forgeinstaller.jar" "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.10/forge-1.20.1-47.3.10-installer.jar"
 	%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient
-	if errorlevel 1 (
-		cls
-		echo Forge install has failed. Exiting...
-		del /q /f "%TEMP%\forgeinstaller.jar"
-		pause
-		exit /b 1
-	)
-	cls
-	call "%LR%\validator.bat"
-	if errorlevel 1 (
-		cls
-		echo Forge validation has failed. Exiting...
-		if exist "%TEMP%\forgeinstaller.jar" (
-			del /q /f "%TEMP%\forgeinstaller.jar"
-		)
-		pause
-		exit /b 1
-	) else (
-		cls
-		echo Forge validated. Proceeding...
-		timeout 3 >nul
-	)
-)
+
 		
 
 :filecopy
