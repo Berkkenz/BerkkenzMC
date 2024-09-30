@@ -1,12 +1,5 @@
 @echo off
 echo starting validation script
-REM ELEVATION
-net session >nul 2>&1
-if %errorlevel% neq 0 (
-    echo Please approve the elevation prompt.
-    powershell -Command "Start-Process '%~f0' -Verb runAs"
-    exit /b
-)
 
 REM JAVA 8 VALIDATION
 if exist "%TEMP%\java8installer.exe" (
