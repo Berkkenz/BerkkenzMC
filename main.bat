@@ -113,7 +113,6 @@ if not exist "%JAVA17%" (
 cls
 echo Initiating forge check...
 :forgecheck
-pause
 
 if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	echo No forge detected
@@ -132,8 +131,8 @@ if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 		)
 	)
 ) else (
+	cls
 	echo Forge version detected. Proceeding...
-	pause
 )
 
 
