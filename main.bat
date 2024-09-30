@@ -19,6 +19,8 @@ if not exist "%APPDATA%\.minecraft" (
 	exit /b 1
 )	
 
+
+
 cls
 echo Checking if Java 8 is installed...
 REM THIS IS THE JAVA 8 UPDATE ------------------------------------------------------
@@ -66,6 +68,8 @@ if not exist "%JAVA8%" (
 	cls
 	echo Java 8 is already installed...
 )
+
+
 
 if not exist "%JAVA17%" (
 	cls
@@ -148,6 +152,7 @@ if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 
 :filecopy
 cd /d %LR%
+
 robocopy "%LR%\mods" "%APPDATA%\.minecraft\mods" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting mods folder...
@@ -156,6 +161,7 @@ if %errorlevel% geq 1 (
 )
 echo Mods up-to-date. Proceeding...
 
+
 robocopy "%LR%\config" "%APPDATA%\.minecraft\config" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting config folder...
@@ -163,6 +169,7 @@ if %errorlevel% geq 1 (
 	xcopy "%LR%\config" "%APPDATA%\.minecraft\config" /e /i /h /y
 )
 echo Config up-to-date. Proceeding...
+
 
 if not exist "%APPDATA%\.minecraft\emotes" (
 	echo No emotes folder, creating one now...
@@ -176,6 +183,7 @@ if %errorlevel% geq 1 (
 )
 echo Emotes up-to-date. Proceeding...
 
+
 robocopy "%LR%\resourcepacks" "%APPDATA%\.minecraft\resourcepacks" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting resourcepacks folder...
@@ -184,6 +192,7 @@ if %errorlevel% geq 1 (
 )
 echo Resourcepacks up-to-date. Proceeding...
 
+
 robocopy "%LR%\options.txt" "%APPDATA%\.minecraft\options.txt" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting options.txt file...
@@ -191,6 +200,7 @@ if %errorlevel% geq 1 (
 	copy "%LR%\options.txt" "%APPDATA%\.minecraft\options.txt" /y
 )
 echo Options file up-to-date. Proceeding...
+
 
 if not exist "%APPDATA%\.minecraft\shaderpacks" (
 	echo No shaderpacks folder. Creating one now...
@@ -203,6 +213,8 @@ if %errorlevel% geq 1 (
 	xcopy "%LR%\shaderpacks" "%APPDATA%\.minecraft\shaderpacks" /e /i /h /y
 )
 echo Shaderpacks up-to-date. Proceeding...
+
+
 echo finalizing...
 
 echo msgbox "The BerkkenzMC Initiator has completed. Enjoy!", vbInformation, "Completed" > "%TEMP%\popup.vbs"
