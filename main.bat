@@ -120,11 +120,14 @@ if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	call "%LR%\forge.bat"
 	if errorlevel 1 (
 		cls
-		echo Forge install failed. Exiting...
+		echo Forge download failed. Exiting...
 		exit /b 1
 	) else (
-		cls
-		echo Forge install successful. Proceeding...
+		if errorlevel 2 (
+			cls
+			echo Forge install failed. Exiting...
+			exit /b 1
+		)
 	)
 ) else (
 	echo Forge version detected. Proceeding...

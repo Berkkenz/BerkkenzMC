@@ -21,6 +21,7 @@ if not exist "%MC%\versions\1.20.1\1.20.1.jar" (
 	xcopy "%LR%\1.20.1" "%MC%\versions\1.20.1" /e /i /h /y
 )
 pause
+pushd "%MC%"
 java -jar "%TEMP%\forgeinstaller.jar" --installClient > "%TEMP%\installlog.txt"
 if errorlevel 1 (
 	cls
@@ -28,6 +29,7 @@ if errorlevel 1 (
 	del /s /f "%TEMP%\forgeinstaller.jar"
 	exit /b 2
 )
+popd
 cls
 echo Forge has been installed. Exiting...
 del /s /f "%TEMP%\forgeinstaller.jar"
