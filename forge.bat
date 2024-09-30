@@ -14,12 +14,13 @@ if errorlevel 1 (
 	pause
 	exit /b 1
 )
-pause
 cls
 echo Forge download successful. Proceeding...
+pause
 if not exist "%MC%\versions\1.20.1\1.20.1.jar" (
 	xcopy "%LR%\1.20.1" "%MC%\versions\1.20.1" /e /i /h /y
 )
+pause
 %JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient --installDir %MC% --nogui
 if errorlevel 1 (
 	cls
