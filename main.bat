@@ -59,6 +59,7 @@ if not exist "%JAVA8%" (
 		exit /b 1
 	)
 	cls
+	set "JAVAUPDATED=True"
 	echo Java 8 install successful! Proceeding...
 	timeout 3
 ) else (
@@ -110,12 +111,21 @@ if not exist "%JAVA17%" (
 	echo Java 17 is already installed...
 )
 
+
+
 cls
 echo Initiating forge check...
 :forgecheck
 
 if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	echo No forge detected
+	if %JAVAUPDATED%==True (
+		echo msgbox "Java has been successfully installed and needs to restart to install forge. Please Relaunch BerkkenzMC Initiator!", vbInformation, "Java Install Completed" > "%TEMP%\javapopup.vbs"
+		cscript //nologo "%TEMP%\javapopup.vbs"
+		del /s /f "%TEMP%\javapopup.vbs"
+		del /s /f "%TEMPGIT%"
+		exit /b 0
+	)
 	call "%LR%\forge.bat"
 	if errorlevel 1 (
 		cls
