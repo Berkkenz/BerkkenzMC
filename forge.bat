@@ -21,11 +21,14 @@ if errorlevel 1 (
 cls
 echo Forge download successful. Proceeding...
 if not exist "%MC%\versions\1.20.1\1.20.1.jar" (
+	cls
+	echo 1.20.1 jar not found. Cloning...
 	xcopy "%LR%\1.20.1" "%MC%\versions\1.20.1" /e /i /h /y
 )
 
 
-
+cls
+echo Starting Forge install...
 pushd "%MC%"
 java -jar "%TEMP%\forgeinstaller.jar" --installClient > "%TEMP%\installlog.txt"
 if errorlevel 1 (
