@@ -172,10 +172,6 @@ if %errorlevel% geq 1 (
 echo Config up-to-date. Proceeding...
 
 
-if not exist "%APPDATA%\.minecraft\emotes" (
-	echo No emotes folder, creating one now...
-	mkdir "%APPDATA%\.minecraft\emotes"
-)
 robocopy "%LR%\emotes" "%APPDATA%\.minecraft\emotes" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting emotes folder...
@@ -203,10 +199,6 @@ if %errorlevel% geq 1 (
 echo Options file up-to-date. Proceeding...
 
 
-if not exist "%APPDATA%\.minecraft\shaderpacks" (
-	echo No shaderpacks folder. Creating one now...
-	mkdir "%APPDATA%\.minecraft\shaderpacks"
-)
 robocopy "%LR%\shaderpacks" "%APPDATA%\.minecraft\shaderpacks" /l /e /njh /njs /ndl /fp >nul
 if %errorlevel% geq 1 (
 	echo Files do not match. Overwriting config folder...
