@@ -11,14 +11,16 @@ if errorlevel 1 (
 	cls
 	echo Forge download has failed... Exiting
 	del /s /f "%TEMP%\forgeinstaller.jar"
+	pause
 	exit /b 1
 )
+pause
 cls
 echo Forge download successful. Proceeding...
 if not exist "%MC%\versions\1.20.1\1.20.1.jar" (
 	xcopy "%LR%\1.20.1" "%MC%\versions\1.20.1" /e /i /h /y
 )
-%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient
+%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient --installDir %MC% --nogui
 if errorlevel 1 (
 	cls
 	echo Forge install has failed. Exiting...
