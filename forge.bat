@@ -21,7 +21,7 @@ if not exist "%MC%\versions\1.20.1\1.20.1.jar" (
 	xcopy "%LR%\1.20.1" "%MC%\versions\1.20.1" /e /i /h /y
 )
 pause
-%JAVA8% -jar "%TEMP%\forgeinstaller.jar" --installClient --installDir %MC% --nogui
+java -jar "%TEMP%\forgeinstaller.jar" --installClient --installDir %MC% --nogui
 if errorlevel 1 (
 	cls
 	echo Forge install has failed. Exiting...
