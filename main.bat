@@ -121,11 +121,13 @@ if not exist "%MC%\versions\1.20.1-forge-47.3.10" (
 	if errorlevel 1 (
 		cls
 		echo Forge download failed. Exiting...
+		pause
 		exit /b 1
 	) else (
 		if errorlevel 2 (
 			cls
 			echo Forge install failed. Exiting...
+			pause
 			exit /b 1
 		)
 	)
