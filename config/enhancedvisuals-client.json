@@ -100,10 +100,10 @@
     },
     "damage": {
       "enabled": true,
-      "opacity": 0.59786475,
+      "opacity": 0.29537368,
       "damaged": {
         "disabled": false,
-        "opacity": 0.6032787,
+        "opacity": 0.29836065,
         "animationSpeed": 0
       },
       "hitEffectIntensity": 0.0,
@@ -333,7 +333,7 @@
     },
     "heartbeat": {
       "enabled": true,
-      "opacity": 1.0,
+      "opacity": 0.60162604,
       "useHealthPercentage": false,
       "maxHealth": 6,
       "maxHealthPercentage": 0.3,
