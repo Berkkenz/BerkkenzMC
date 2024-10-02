@@ -1,0 +1,43 @@
+if not exist "%JAVA17%" (
+	cls
+	echo Java 17 is not installed, attempting download...
+	curl -L -o "%TEMP%\java17installer.exe" "https://download.oracle.com/java/17/archive/jdk-17.0.11_windows-x64_bin.exe"
+	if errorlevel 1 (
+		cls
+		echo Java 17 download has failed. Exiting...
+		echo msgbox "Java 17 download has unexpectedly failed and has terminated the script.", vbInformation, "Java 17 Download Failed" > "%TEMP%\java8popup.vbs"
+		cscript //nologo "%TEMP%\java17popup.vbs"
+		del /s /f "%TEMP%\java17popup.vbs"
+		del /q /f "%TEMP%\java17installer.exe"
+		exit /b 1
+	)
+	cls
+	echo Java 17 download successful. Attempting install...
+	start "" /wait "%TEMP%\java17installer.exe" /s
+	if errorlevel 1 (
+		cls
+		echo Java 17 install has failed. Exiting...
+		pause
+		del /q /f "%TEMP%\java17installer.exe"
+		exit /b 1
+	)
+	cls
+	echo Java 17 finalizing
+	timeout 4 /nobreak >nul
+	call "%LR%\validator.bat"
+	if errorlevel 1 (
+		cls
+		echo Java 17 install has failed. Exiting...
+		pause
+		if exist "%TEMP%\java17installer.exe" (
+			del /q /f "%TEMP%\java17installer.exe"
+		)
+		exit /b 1
+	)
+	cls
+	echo Java 17 install successful! Proceeding...
+	timeout 3
+) else (
+	cls
+	echo Java 17 is already installed...
+)
